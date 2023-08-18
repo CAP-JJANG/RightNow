@@ -1,4 +1,4 @@
-package com.example.rightnow.base
+package com.capjjang.rightnow.base
 
 import android.app.Activity
 import android.app.Dialog

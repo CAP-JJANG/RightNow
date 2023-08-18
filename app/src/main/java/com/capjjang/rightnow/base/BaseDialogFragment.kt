@@ -1,4 +1,4 @@
-package com.example.rightnow
+package com.capjjang.rightnow.base
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable

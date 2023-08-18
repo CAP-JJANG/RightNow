@@ -1,6 +1,6 @@
 package com.capjjang.rightnow.ui
 
-import com.android.example.travalue.base.BaseFragment
+import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.databinding.FragmentLoadBinding
 
