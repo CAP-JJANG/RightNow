@@ -1,15 +1,9 @@
 package com.capjjang.rightnow.ui
 
-import android.content.Context
-import android.os.Environment
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.capjjang.rightnow.databinding.QuizItemBinding
-import com.example.rightnow.databinding.QuizItemBinding
-import java.util.*
 import kotlin.collections.ArrayList
 
 class QuizAdapter(
