@@ -4,12 +4,17 @@ import androidx.viewpager2.widget.ViewPager2
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.databinding.FragmentQuizBinding
+import com.capjjang.rightnow.util.MyApplication
 
 class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
 
     override fun initStartView() {
         super.initStartView()
+
+
+        MyApplication.prefs.setString("grade", "0")
+        MyApplication.prefs.setString("myAnswer", "")
     }
 
     override fun initDataBinding() {
