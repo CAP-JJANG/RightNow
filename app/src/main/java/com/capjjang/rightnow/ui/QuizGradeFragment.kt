@@ -20,6 +20,7 @@ class QuizGradeFragment: BaseFragment<FragmentQuizGradeBinding>(R.layout.fragmen
     override fun initAfterBinding() {
         super.initAfterBinding()
 
+
     }
 
 }
