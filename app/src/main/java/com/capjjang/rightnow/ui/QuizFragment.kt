@@ -6,8 +6,9 @@ import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.databinding.FragmentQuizBinding
 import com.capjjang.rightnow.util.MyApplication
 
-class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
+class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
+    var answer = ""
 
     override fun initStartView() {
         super.initStartView()
@@ -39,6 +40,17 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     override fun initAfterBinding() {
         super.initAfterBinding()
+
+        // 정답제출
+        binding.btnAnswer.setOnClickListener {
+//            if (answer == binding.textView2.text.toString()){
+//                val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
+//                navController.navigate(action)
+//            }
+            MyApplication.prefs.setString("myAnswer", binding.textView2.text.toString())
+            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
+            navController.navigate(action)
+        }
 
     }
 
