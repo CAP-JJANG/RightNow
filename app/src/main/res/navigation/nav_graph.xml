@@ -7,6 +7,13 @@
         android:id="@+id/quizFragment"
         android:name="com.capjjang.rightnow.ui.QuizFragment"
         android:label="QuizFragment" >
+        <action
+            android:id="@+id/action_quizFragment_to_quizResultDialog"
+            app:destination="@id/quizResultDialog" />
+        <argument
+            android:name="argsString"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
     <fragment
         android:id="@+id/loadFragment"
@@ -16,6 +23,18 @@
             android:id="@+id/action_loadFragment_to_startFragment"
             app:destination="@id/startFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/quizResultDialog"
+        android:name="com.capjjang.rightnow.ui.QuizResultDialog"
+        android:label="QuizResultDialog" >
+        <argument
+            android:name="argsString"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_quizResultDialog_to_quizGradeFragment2"
+            app:destination="@id/quizGradeFragment2" />
+    </dialog>
     <fragment
         android:id="@+id/quizGradeFragment2"
         android:name="com.capjjang.rightnow.ui.QuizGradeFragment"
