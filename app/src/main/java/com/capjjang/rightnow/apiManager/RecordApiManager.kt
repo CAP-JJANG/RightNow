@@ -1,7 +1,10 @@
 package com.example.rightnow.apiManager
 
 import android.content.Context
+import android.util.Log
 import com.capjjang.rightnow.api.RecordService
+import com.capjjang.rightnow.model.PostTestModel
+import com.capjjang.rightnow.model.RecordModel
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -28,5 +31,28 @@ class RecordApiManager {
             .build()
 
         retrofitService = retrofit?.create(RecordService::class.java)
+    }
+
+    fun postTest(postData: RecordModel){
+        val resultData: Call<PostTestModel>? = retrofitService?.postTest(postData)
+        resultData?.enqueue(object : Callback<PostTestModel> {
+            override fun onResponse(
+                call: Call<PostTestModel>,
+                response: Response<PostTestModel>
+            ) {
+                if (response.isSuccessful) {
+                    val result: PostTestModel = response.body()!!
+                    Log.d("[mmihye]","서버응답 : "+result.predicted_alphabet)
+
+                } else {
+                    Log.d("resultt", "실패코드_${response.code()}")
+                }
+            }
+
+            override fun onFailure(call: Call<PostTestModel>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("resultt","통신 실패")
+            }
+        })
     }
 }
