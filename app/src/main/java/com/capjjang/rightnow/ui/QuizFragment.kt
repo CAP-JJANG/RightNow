@@ -1,14 +1,26 @@
 package com.capjjang.rightnow.ui
 
+import android.os.Environment
+import android.util.Log
+import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.databinding.FragmentQuizBinding
+import com.capjjang.rightnow.util.AudioRecorder
 import com.capjjang.rightnow.util.MyApplication
+import com.example.rightnow.apiManager.RecordApiManager
+import java.util.Date
 
 
 class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
+
+    var quizItems = arrayListOf<String>("cat","dog","elephant","hansung")
     var answer = ""
+
+    val apiManager = RecordApiManager.getInstance(context)
+
+    val audioRecorder = AudioRecorder()
 
     override fun initStartView() {
         super.initStartView()
@@ -40,6 +52,52 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     override fun initAfterBinding() {
         super.initAfterBinding()
+
+
+        // 알파벳 지우기
+        binding.btnBack.setOnClickListener {
+            audioRecorder.stopRecording()
+
+            if(binding.textView2.text.isNotEmpty())
+            {
+                val before_alpha = binding.textView2.text
+                binding.textView2.text = before_alpha.substring(0, before_alpha.length - 1)
+
+            }
+
+        }
+
+
+        // 녹음시작
+        binding.btnCheck.setOnClickListener {
+
+            // 녹음 파일 이름
+            val filePath =
+                Environment.getExternalStorageDirectory().absolutePath + "/Download/" + Date().time.toString() + ".aac"
+
+            // 녹음 시작
+            if (apiManager != null) {
+                audioRecorder.startRecording(filePath, apiManager)
+            }
+            Log.d("[mmihye] startRecording : ", filePath)
+
+        }
+
+        binding.btnStop.setOnClickListener {
+            audioRecorder.stopRecording()
+        }
+
+
+        // 페이지 바뀔때마다 callback
+        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                answer =quizItems[binding.viewPager2.currentItem]
+
+                audioRecorder.stopRecording()
+                binding.textView2.text = ""
+            }
+        })
 
         // 정답제출
         binding.btnAnswer.setOnClickListener {
