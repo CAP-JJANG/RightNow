@@ -54,6 +54,29 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
         super.initAfterBinding()
 
 
+        // 알파벳 값이 변경될 때마다 호출
+        apiManager?.resultLivedata?.observe(viewLifecycleOwner) { newValue ->
+            binding.tvText.visibility = View.INVISIBLE
+            binding.btnBack.visibility = View.VISIBLE
+
+            if(audioRecorder.isRecording == true){
+                // 화면에 값 변경
+                binding.textView2.text = binding.textView2.text.toString()+ newValue
+                Log.d("[mmihye]", "값 $newValue 으로 변경")
+
+                // UI 업데이트 후 녹음 시작
+                binding.root.post {
+                    // 녹음 파일 이름
+                    val filePath = Environment.getExternalStorageDirectory().absolutePath + "/Download/" + Date().time.toString() + ".aac"
+
+                    // 녹음 시작
+                    val audioRecorder = AudioRecorder()
+                    audioRecorder.startRecording(filePath, apiManager)
+                    Log.d("[mmihye] startRecording : ", filePath)
+                }
+            }
+        }
+
         // 알파벳 지우기
         binding.btnBack.setOnClickListener {
             audioRecorder.stopRecording()
