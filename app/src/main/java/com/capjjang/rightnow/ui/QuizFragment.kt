@@ -25,9 +25,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
     override fun initStartView() {
         super.initStartView()
 
-
-        MyApplication.prefs.setString("grade", "0")
-        MyApplication.prefs.setString("myAnswer", "")
+//        MyApplication.prefs.setString("grade", "0")
+//        MyApplication.prefs.setString("myAnswer", "")
     }
 
     override fun initDataBinding() {

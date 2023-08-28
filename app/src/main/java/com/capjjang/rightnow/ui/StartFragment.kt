@@ -2,6 +2,7 @@ package com.capjjang.rightnow.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.capjjang.rightnow.R
@@ -17,6 +18,10 @@ class StartFragment : BaseFragment<FragmentStartBinding>(R.layout.fragment_start
 
         // 권한 확인
         onCheckPermission()
+
+        binding.btnStart.setOnClickListener{
+            navController.navigate(R.id.action_startFragment_to_quizFragment)
+        }
 
     }
 
