@@ -1,11 +1,11 @@
 package com.capjjang.rightnow.ui
 
+import android.content.Context
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseBottomDialogFragment
 import com.capjjang.rightnow.databinding.DialogQuizResultBinding
-import com.capjjang.rightnow.util.MyApplication
 
 class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layout.dialog_quiz_result) {
     val args: QuizResultDialogArgs by navArgs()
@@ -21,15 +21,19 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
         binding.button.setOnClickListener {
             navController.navigate(R.id.action_quizResultDialog_to_quizGradeFragment2)
         }
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val answer = sharedPref.getString("myAnswer", "")
+        var grade = sharedPref.getInt("grade",0)
 
-        when (args.argsString) {
+        when (args.argsStringDialog) {
             "cat" -> {
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(MyApplication.prefs.getString("myAnswer", "null") == "cat"){
+                if(answer == "cat"){
                     binding.tvCheck.text ="정답입니다!"
-                    var currentGrade = MyApplication.prefs.getString("grade", "0").toInt()
-                    currentGrade += 20
-                    MyApplication.prefs.setString("grade",currentGrade.toString())
+                    with (sharedPref!!.edit()) {
+                        putInt("grade", grade + 20)
+                        apply()
+                    }
                 }
                 else
                     binding.tvCheck.text ="오답입니다!"
@@ -37,11 +41,12 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
             }
             "dog" -> {
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(MyApplication.prefs.getString("myAnswer", "null") == "dog"){
+                if(answer == "dog"){
                     binding.tvCheck.text ="정답입니다!"
-                    var currentGrade = MyApplication.prefs.getString("grade", "0").toInt()
-                    currentGrade += 20
-                    MyApplication.prefs.setString("grade",currentGrade.toString())
+                    with (sharedPref!!.edit()) {
+                        putInt("grade", grade + 20)
+                        apply()
+                    }
                 }
 
                 else
@@ -50,11 +55,12 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
             }
             "elephant"->{
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(MyApplication.prefs.getString("myAnswer", "null") == "elephant"){
+                if(answer == "elephant"){
                     binding.tvCheck.text ="정답입니다!"
-                    var currentGrade = MyApplication.prefs.getString("grade", "0").toInt()
-                    currentGrade += 20
-                    MyApplication.prefs.setString("grade",currentGrade.toString())
+                    with (sharedPref!!.edit()) {
+                        putInt("grade", grade + 20)
+                        apply()
+                    }
                 }
                 else
                     binding.tvCheck.text ="오답입니다!"
@@ -62,11 +68,12 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
             }
             "hansung"->{
                 binding.tvHansung.visibility = View.VISIBLE
-                if(MyApplication.prefs.getString("myAnswer", "null") == "hansung"){
+                if(answer == "hansung"){
                     binding.tvCheck.text ="정답입니다!"
-                    var currentGrade = MyApplication.prefs.getString("grade", "0").toInt()
-                    currentGrade += 20
-                    MyApplication.prefs.setString("grade",currentGrade.toString())
+                    with (sharedPref!!.edit()) {
+                        putInt("grade", grade + 20)
+                        apply()
+                    }
                 }
                 else
                     binding.tvCheck.text ="오답입니다!"

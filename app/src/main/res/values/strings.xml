@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RightNow</string>
+    <string name="argsString"></string>
 </resources>

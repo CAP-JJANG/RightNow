@@ -1,9 +1,9 @@
 package com.capjjang.rightnow.ui
 
+import android.content.Context
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.databinding.FragmentQuizGradeBinding
-import com.capjjang.rightnow.util.MyApplication
 
 class QuizGradeFragment: BaseFragment<FragmentQuizGradeBinding>(R.layout.fragment_quiz_grade) {
 
@@ -22,7 +22,8 @@ class QuizGradeFragment: BaseFragment<FragmentQuizGradeBinding>(R.layout.fragmen
         super.initAfterBinding()
 
 
-        val grade = MyApplication.prefs.getString("grade","00")
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val grade = sharedPref.getInt("grade",0)
 
         binding.tvGrade.text = "당신의 점수는 $grade 점입니다"
 

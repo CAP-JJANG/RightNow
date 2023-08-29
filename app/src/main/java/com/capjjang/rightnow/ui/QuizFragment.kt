@@ -1,5 +1,6 @@
 package com.capjjang.rightnow.ui
 
+import android.content.Context
 import android.os.Environment
 import android.util.Log
 import android.view.View
@@ -8,7 +9,6 @@ import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseFragment
 import com.capjjang.rightnow.databinding.FragmentQuizBinding
 import com.capjjang.rightnow.util.AudioRecorder
-import com.capjjang.rightnow.util.MyApplication
 import com.example.rightnow.apiManager.RecordApiManager
 import java.util.Date
 
@@ -22,11 +22,19 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     val audioRecorder = AudioRecorder()
 
+
     override fun initStartView() {
         super.initStartView()
 
-//        MyApplication.prefs.setString("grade", "0")
-//        MyApplication.prefs.setString("myAnswer", "")
+
+        val sharedPref = activity?.getSharedPreferences(
+            "WEB_HISTORY", Context.MODE_PRIVATE)
+
+        with (sharedPref!!.edit()) {
+            putInt("grade", 0)
+            putString("myAnswer","")
+            apply()
+        }
     }
 
     override fun initDataBinding() {
@@ -127,7 +135,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 //                val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
 //                navController.navigate(action)
 //            }
-            MyApplication.prefs.setString("myAnswer", binding.textView2.text.toString())
+//            MyApplication.prefs.setString("myAnswer", binding.textView2.text.toString())
             val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
             navController.navigate(action)
         }
