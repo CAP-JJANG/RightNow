@@ -25,7 +25,7 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
         val answer = sharedPref.getString("myAnswer", "")
         var grade = sharedPref.getInt("grade",0)
 
-        when (args.argsStringDialog) {
+        when (answer) {
             "cat" -> {
                 binding.tvHansung.visibility = View.INVISIBLE
                 if(answer == "cat"){
@@ -85,11 +85,6 @@ class QuizResultDialog: BaseBottomDialogFragment<DialogQuizResultBinding>(R.layo
         binding.imageButton2.setOnClickListener{
             dismiss()
         }
-
-    }
-
-    override fun initAfterBinding() {
-        super.initAfterBinding()
 
     }
 }

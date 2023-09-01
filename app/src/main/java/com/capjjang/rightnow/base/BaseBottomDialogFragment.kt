@@ -82,7 +82,7 @@ abstract class BaseBottomDialogFragment <B: ViewDataBinding> (@LayoutRes private
         bottomSheet.layoutParams = layoutParams
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
-
+//
     private fun getBottomSheetDialogDefaultHeight(): Int {
         return getWindowHeight() * 30 / 100
     }
