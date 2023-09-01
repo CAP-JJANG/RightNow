@@ -31,7 +31,6 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
         with (sharedPref!!.edit()) {
             putInt("grade", 0)
-            putString("myAnswer","")
             apply()
         }
     }
@@ -125,6 +124,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
                 audioRecorder.stopRecording()
                 binding.textView2.text = ""
+
+
             }
         })
 
@@ -136,13 +137,12 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
             val sharedPref = activity?.getSharedPreferences("WEB_HISTORY", Context.MODE_PRIVATE)
             with (sharedPref!!.edit()) {
-                putInt("grade", 0)
                 putString("myAnswer",binding.textView2.text.toString())
                 apply()
             }
 
 
-            fragmentManager?.let { it1 -> QuizResultDialog().show(it1, "resultDialog") }
+            fragmentManager?.let { it1 -> QuizResultDialog(answer).show(it1, "resultDialog") }
 //            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
 //            navController.navigate(action)
 
