@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import com.capjjang.rightnow.api.RecordService
 import com.capjjang.rightnow.model.PostTestModel
 import com.capjjang.rightnow.model.RecordModel
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,6 +19,16 @@ class RecordApiManager {
     var _resultLivedata: MutableLiveData<String> = MutableLiveData()
     val resultLivedata: LiveData<String>
         get() = _resultLivedata
+
+    val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+
+    val client = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor)
+        // 다른 인터셉터 또는 설정들을 추가할 수 있습니다.
+        .build()
 
 
     companion object {  // DCL 적용한 싱글톤 구현
@@ -33,7 +45,7 @@ class RecordApiManager {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://54.180.116.175:8000")
+            .baseUrl("http://15.164.224.196:8000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

@@ -28,26 +28,27 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
 
         when (answer) {
             "cat" -> {
-                Log.d("answer",answer)
+                Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
                 if(myAnswer == "cat"){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
-                        putInt("grade", grade + 20)
+                        putInt("grade", grade + 25)
                         apply()
                     }
                 }
-                else
-                    binding.tvCheck.text ="오답입니다!"
+                else {
+                    binding.tvCheck.text = "오답입니다!"
+                }
                 binding.tvQuiz.text="고양이는 영어로 cat 입니다."
             }
             "dog" -> {
-                Log.d("answer",answer)
+                Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
                 if(myAnswer == "dog"){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
-                        putInt("grade", grade + 20)
+                        putInt("grade", grade + 25)
                         apply()
                     }
                 }
@@ -57,12 +58,12 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
                 binding.tvQuiz.text="강아지는 영어로 dog 입니다."
             }
             "elephant"->{
-                Log.d("answer",answer)
+                Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
                 if(myAnswer == "elephant"){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
-                        putInt("grade", grade + 20)
+                        putInt("grade", grade + 25)
                         apply()
                     }
                 }
@@ -71,12 +72,12 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
                 binding.tvQuiz.text="코끼리는 영어로 elephant 입니다"
             }
             "hansung"->{
-                Log.d("answer",answer)
+                Log.d("grade",grade.toString())
                 binding.button.visibility = View.VISIBLE
                 if(myAnswer == "hansung"){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
-                        putInt("grade", grade + 20)
+                        putInt("grade", grade + 25)
                         apply()
                     }
                 }
