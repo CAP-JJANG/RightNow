@@ -22,6 +22,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     val audioRecorder = AudioRecorder()
 
+    val isAnswerSubmitted = arrayListOf<Boolean>(false,false,false,false)
+
 
     override fun initStartView() {
         super.initStartView()
@@ -125,7 +127,13 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
                 audioRecorder.stopRecording()
                 binding.textView2.text = ""
 
-
+                // 스와이프 막기
+                if(audioRecorder.isRecording == true){
+                    binding.viewPager2.fakeDragBy(0f)
+                }
+                else if(isAnswerSubmitted[binding.viewPager2.currentItem] == false){
+                    binding.viewPager2.fakeDragBy(0f)
+                }
             }
         })
 
@@ -140,6 +148,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
                 putString("myAnswer",binding.textView2.text.toString())
                 apply()
             }
+
+            isAnswerSubmitted[binding.viewPager2.currentItem] = true
 
 
             fragmentManager?.let { it1 -> QuizResultDialog(answer).show(it1, "resultDialog") }
