@@ -22,6 +22,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     val audioRecorder = AudioRecorder()
 
+    private val isAnswerCorrect = arrayListOf<Boolean>(false,false,false,false)
     val isAnswerSubmitted = arrayListOf<Boolean>(false,false,false,false)
 
 
@@ -117,6 +118,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
             audioRecorder.stopRecording()
         }
 
+        binding.viewPager2.isUserInputEnabled = false
+
 
         // 페이지 바뀔때마다 callback
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -126,33 +129,29 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
                 audioRecorder.stopRecording()
                 binding.textView2.text = ""
+                binding.viewPager2.isUserInputEnabled = false
 
-                // 스와이프 막기
-                if(audioRecorder.isRecording == true){
-                    binding.viewPager2.fakeDragBy(0f)
-                }
-                else if(isAnswerSubmitted[binding.viewPager2.currentItem] == false){
-                    binding.viewPager2.fakeDragBy(0f)
-                }
             }
         })
 
         // 정답제출
         binding.btnAnswer.setOnClickListener {
-//            MyApplication.prefs.setString("myAnswer", binding.textView2.text.toString())
-//            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
-//            navController.navigate(action)
+//            val sharedPref = activity?.getSharedPreferences("WEB_HISTORY", Context.MODE_PRIVATE)
+//            with (sharedPref!!.edit()) {
+//                putString("myAnswer",binding.textView2.text.toString())
+//                apply()
+//            }
 
-            val sharedPref = activity?.getSharedPreferences("WEB_HISTORY", Context.MODE_PRIVATE)
-            with (sharedPref!!.edit()) {
-                putString("myAnswer",binding.textView2.text.toString())
-                apply()
-            }
+            audioRecorder.stopRecording()
 
+            if(answer == binding.textView2.text.toString())
+                isAnswerCorrect[binding.viewPager2.currentItem] = true
             isAnswerSubmitted[binding.viewPager2.currentItem] = true
+            binding.viewPager2.isUserInputEnabled = true
 
 
-            fragmentManager?.let { it1 -> QuizResultDialog(answer).show(it1, "resultDialog") }
+
+            fragmentManager?.let { it1 -> QuizResultDialog(answer, isAnswerCorrect).show(it1, "resultDialog") }
 //            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
 //            navController.navigate(action)
 

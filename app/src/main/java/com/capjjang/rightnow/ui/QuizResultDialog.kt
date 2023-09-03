@@ -8,7 +8,7 @@ import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseBottomDialogFragment
 import com.capjjang.rightnow.databinding.DialogQuizResultBinding
 
-class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizResultBinding>(R.layout.dialog_quiz_result) {
+class QuizResultDialog(val answer: String, val isAnswerCorrect : ArrayList<Boolean>): BaseBottomDialogFragment<DialogQuizResultBinding>(R.layout.dialog_quiz_result) {
 
     override fun initStartView() {
         super.initStartView()
@@ -30,7 +30,7 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
             "cat" -> {
                 Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(myAnswer == "cat"){
+                if(isAnswerCorrect[0]){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
                         putInt("grade", grade + 25)
@@ -45,7 +45,7 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
             "dog" -> {
                 Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(myAnswer == "dog"){
+                if(isAnswerCorrect[1]){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
                         putInt("grade", grade + 25)
@@ -60,7 +60,7 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
             "elephant"->{
                 Log.d("grade",grade.toString())
                 binding.tvHansung.visibility = View.INVISIBLE
-                if(myAnswer == "elephant"){
+                if(isAnswerCorrect[2]){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
                         putInt("grade", grade + 25)
@@ -74,7 +74,7 @@ class QuizResultDialog(val answer: String): BaseBottomDialogFragment<DialogQuizR
             "hansung"->{
                 Log.d("grade",grade.toString())
                 binding.button.visibility = View.VISIBLE
-                if(myAnswer == "hansung"){
+                if(isAnswerCorrect[3]){
                     binding.tvCheck.text ="정답입니다!"
                     with (sharedPref!!.edit()) {
                         putInt("grade", grade + 25)
