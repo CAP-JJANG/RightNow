@@ -3,7 +3,9 @@ package com.capjjang.rightnow.ui
 import android.content.Context
 import android.os.Environment
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseFragment
@@ -25,6 +27,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
     private val isAnswerCorrect = arrayListOf<Boolean>(false,false,false,false)
     val isAnswerSubmitted = arrayListOf<Boolean>(false,false,false,false)
 
+    var startX = 0f
+    var startY = 0f
 
     override fun initStartView() {
         super.initStartView()
@@ -119,6 +123,28 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
         }
 
         binding.viewPager2.isUserInputEnabled = false
+
+        binding.viewPager2.setOnTouchListener { _, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    startX = event.x
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    val endX = event.x
+                    val distanceX = endX - startX
+
+                    Log.d("MotionEventt",startX.toString() +  ", " + endX.toString() )
+                    // 스와이프를 감지하기 위한 조건 설정
+                    if (distanceX < 100) {
+                        Log.d("MotionEventt","true" )
+                        // 왼쪽으로 스와이프
+                        Toast.makeText(context,"퀴즈 정답을 제출해주세요.",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            true // 이벤트 소비
+        }
 
 
         // 페이지 바뀔때마다 callback
