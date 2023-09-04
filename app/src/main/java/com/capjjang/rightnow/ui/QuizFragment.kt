@@ -136,7 +136,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
                     Log.d("MotionEventt",startX.toString() +  ", " + endX.toString() )
                     // 스와이프를 감지하기 위한 조건 설정
-                    if (distanceX < 100) {
+                    if (distanceX < 100 || distanceX > 100) {
                         Log.d("MotionEventt","true" )
                         // 왼쪽으로 스와이프
                         Toast.makeText(context,"퀴즈 정답을 제출해주세요.",Toast.LENGTH_SHORT).show()
