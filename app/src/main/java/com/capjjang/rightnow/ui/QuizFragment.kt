@@ -192,10 +192,11 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
     private fun getCardList(): ArrayList<Int> {
         return arrayListOf<Int>(
-            R.drawable.cat,
-            R.drawable.dog,
             R.drawable.elephant,
-            R.drawable.hansung
+            R.drawable.chick,
+            R.drawable.frog,
+            R.drawable.bear,
+            R.drawable.rabbit
         )
     }
 
