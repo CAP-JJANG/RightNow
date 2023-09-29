@@ -17,15 +17,15 @@ import java.util.Date
 
 class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
-    var quizItems = arrayListOf<String>("cat","dog","elephant","hansung")
+    var quizItems = arrayListOf("elephant","chick","frog","bear","rabbit")
     var answer = ""
 
     val apiManager = RecordApiManager.getInstance(context)
 
     val audioRecorder = AudioRecorder()
 
-    private val isAnswerCorrect = arrayListOf<Boolean>(false,false,false,false)
-    val isAnswerSubmitted = arrayListOf<Boolean>(false,false,false,false)
+    private val isAnswerCorrect = arrayListOf<Boolean>(false,false,false,false,false)
+    val isAnswerSubmitted = arrayListOf<Boolean>(false,false,false,false,false)
 
     var startX = 0f
     var startY = 0f
@@ -170,16 +170,16 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
             audioRecorder.stopRecording()
 
-            if(binding.textView2.text == ""){
-                Toast.makeText(context,"정답을 입력해주세요.",Toast.LENGTH_SHORT).show()
-            }else{
-                if(answer == binding.textView2.text.toString())
+//            if(binding.textView2.text == ""){
+//                Toast.makeText(context,"정답을 입력해주세요.",Toast.LENGTH_SHORT).show()
+//            }else{
+                if(quizItems[binding.viewPager2.currentItem] == binding.textView2.text.toString())
                     isAnswerCorrect[binding.viewPager2.currentItem] = true
                 isAnswerSubmitted[binding.viewPager2.currentItem] = true
                 binding.viewPager2.isUserInputEnabled = true
 
-                fragmentManager?.let { it1 -> QuizResultDialog(answer, isAnswerCorrect).show(it1, "resultDialog") }
-            }
+                fragmentManager?.let { it1 -> QuizResultDialog(binding.viewPager2.currentItem, isAnswerCorrect).show(it1, "resultDialog") }
+//            }
 
 //            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
 //            navController.navigate(action)
