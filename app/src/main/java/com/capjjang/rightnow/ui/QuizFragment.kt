@@ -170,16 +170,16 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
             audioRecorder.stopRecording()
 
-//            if(binding.textView2.text == ""){
-//                Toast.makeText(context,"정답을 입력해주세요.",Toast.LENGTH_SHORT).show()
-//            }else{
+            if(binding.textView2.text == ""){
+                Toast.makeText(context,"정답을 입력해주세요.",Toast.LENGTH_SHORT).show()
+            }else{
                 if(quizItems[binding.viewPager2.currentItem] == binding.textView2.text.toString())
                     isAnswerCorrect[binding.viewPager2.currentItem] = true
                 isAnswerSubmitted[binding.viewPager2.currentItem] = true
                 binding.viewPager2.isUserInputEnabled = true
 
                 fragmentManager?.let { it1 -> QuizResultDialog(binding.viewPager2.currentItem, isAnswerCorrect).show(it1, "resultDialog") }
-//            }
+            }
 
 //            val action = QuizFragmentDirections.actionQuizFragmentToQuizResultDialog(answer)
 //            navController.navigate(action)
