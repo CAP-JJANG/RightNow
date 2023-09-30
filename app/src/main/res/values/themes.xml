@@ -25,4 +25,9 @@
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_border</item>
     </style>
+
+    <style name="Theme.RightNow.RemoveSplash" parent ="Theme.RightNow">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>
