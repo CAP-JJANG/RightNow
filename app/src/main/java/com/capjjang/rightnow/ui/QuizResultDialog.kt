@@ -1,27 +1,19 @@
 package com.capjjang.rightnow.ui
 
-import android.content.Context
-import android.util.Log
 import android.view.View
-import androidx.navigation.fragment.navArgs
 import com.capjjang.rightnow.R
 import com.capjjang.rightnow.base.BaseBottomDialogFragment
 import com.capjjang.rightnow.databinding.DialogQuizResultBinding
+import com.capjjang.rightnow.util.MyGlobals
 
 class QuizResultDialog(val answer: Int, val isAnswerCorrect : ArrayList<Boolean>): BaseBottomDialogFragment<DialogQuizResultBinding>(R.layout.dialog_quiz_result) {
-
-
-    private val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-
-    var grade = sharedPref?.getInt("grade",0)
-
 
     val englishAnswerList = arrayListOf("elephant","chick","frog","bear","rabbit")
     val koreanAnswerList = arrayListOf("꼬끼리","병아리","개구리","곰","토끼")
 
-
     override fun initStartView() {
         super.initStartView()
+
     }
 
     override fun initDataBinding() {
@@ -41,19 +33,20 @@ class QuizResultDialog(val answer: Int, val isAnswerCorrect : ArrayList<Boolean>
     }
 
     private fun checkAnswer(index : Int){
-        if(isAnswerCorrect[index]){
-            binding.tvCheck.text ="정답입니다!"
-            with (sharedPref!!.edit()) {
-                putInt("grade", grade?.plus(25) ?: 25)
-                apply()
-            }
+        if(index == 4) {
+            binding.ResultButton.visibility = View.VISIBLE
+            val grade = isAnswerCorrect.count{ it } * 20
+            MyGlobals.instance?.data = grade.toString()
+
         }
-        if(index == 4){
-            binding.ResultButton.visibility=View.VISIBLE
+
+        if(isAnswerCorrect[index]) {
+            binding.tvCheck.text = "정답입니다!"
         }
 
         else
             binding.tvCheck.text ="오답입니다!"
         binding.tvQuiz.text="${koreanAnswerList[index]} 영어로 ${englishAnswerList[index]} 입니다."
     }
+
 }

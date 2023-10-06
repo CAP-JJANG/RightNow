@@ -30,16 +30,11 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
     var startX = 0f
     var startY = 0f
 
+    var i = 0
+
     override fun initStartView() {
         super.initStartView()
 
-
-        val sharedPref = activity?.getSharedPreferences("WEB_HISTORY", Context.MODE_PRIVATE)
-
-        with (sharedPref!!.edit()) {
-            putInt("grade", 0)
-            apply()
-        }
     }
 
     override fun initDataBinding() {
@@ -71,9 +66,15 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
             binding.tvText.visibility = View.INVISIBLE
             binding.btnBack.visibility = View.VISIBLE
 
-            if(audioRecorder.isRecording == true){
+            if(newValue == "error"){
+                Toast.makeText(context,"네트워크 연결을 확인해주세요.",Toast.LENGTH_SHORT).show()
+            }
+            else if(audioRecorder.isRecording == true){
                 // 화면에 값 변경
-                binding.textView2.text = binding.textView2.text.toString()+ newValue
+                binding.textView2.text = binding.textView2.text.toString() + newValue
+//                if(i<quizItems[binding.viewPager2.currentItem].length )
+//                    binding.textView2.text = binding.textView2.text.toString() + quizItems[binding.viewPager2.currentItem][i].toString()
+//                i = i+ 1
                 Log.d("[mmihye]", "값 $newValue 으로 변경")
 
                 // UI 업데이트 후 녹음 시작
@@ -83,7 +84,10 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
                     // 녹음 시작
                     val audioRecorder = AudioRecorder()
+                    if(audioRecorder.isRecording)
+                        Toast.makeText(context,"녹음을 시작합니다.",Toast.LENGTH_SHORT).show()
                     audioRecorder.startRecording(filePath, apiManager)
+
                     Log.d("[mmihye] startRecording : ", filePath)
                 }
             }
@@ -112,6 +116,8 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
 
             // 녹음 시작
             if (apiManager != null) {
+//                if(audioRecorder.isRecording)
+                Toast.makeText(context,"녹음을 시작합니다.",Toast.LENGTH_SHORT).show()
                 audioRecorder.startRecording(filePath, apiManager)
             }
             Log.d("[mmihye] startRecording : ", filePath)
@@ -152,6 +158,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 answer =quizItems[binding.viewPager2.currentItem]
+                i=0
 
                 audioRecorder.stopRecording()
                 binding.textView2.text = ""
@@ -173,8 +180,10 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
             if(binding.textView2.text == ""){
                 Toast.makeText(context,"정답을 입력해주세요.",Toast.LENGTH_SHORT).show()
             }else{
-                if(quizItems[binding.viewPager2.currentItem] == binding.textView2.text.toString())
+                if(quizItems[binding.viewPager2.currentItem] == binding.textView2.text.toString()){
+                    Log.d("answerr","ok")
                     isAnswerCorrect[binding.viewPager2.currentItem] = true
+                }
                 isAnswerSubmitted[binding.viewPager2.currentItem] = true
                 binding.viewPager2.isUserInputEnabled = true
 

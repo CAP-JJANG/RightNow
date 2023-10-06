@@ -2,6 +2,7 @@ package com.example.rightnow.apiManager
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.capjjang.rightnow.api.RecordService
@@ -45,7 +46,7 @@ class RecordApiManager {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://15.164.224.196:8000")
+            .baseUrl("http://3.34.136.127:8000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -72,6 +73,7 @@ class RecordApiManager {
             override fun onFailure(call: Call<PostTestModel>, t: Throwable) {
                 t.printStackTrace()
                 Log.d("resultt","통신 실패")
+                _resultLivedata.postValue("error")
             }
         })
     }

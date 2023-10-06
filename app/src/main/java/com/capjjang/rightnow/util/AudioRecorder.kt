@@ -2,6 +2,7 @@ package com.capjjang.rightnow.util
 import android.content.Context
 import android.media.MediaRecorder
 import android.util.Log
+import android.widget.Toast
 import com.capjjang.rightnow.model.RecordModel
 import com.example.rightnow.apiManager.RecordApiManager
 import java.io.IOException
@@ -10,7 +11,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileInputStream
 
-class AudioRecorder {
+class AudioRecorder() {
     private var mediaRecorder: MediaRecorder? = null
     var isRecording = true
     private var fileName = ""
