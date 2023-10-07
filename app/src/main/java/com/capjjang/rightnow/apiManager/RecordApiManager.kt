@@ -46,7 +46,7 @@ class RecordApiManager {
 
     init {
         retrofit = Retrofit.Builder()
-            .baseUrl("http://3.34.136.127:8000")
+            .baseUrl("http://13.125.221.197:8000")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

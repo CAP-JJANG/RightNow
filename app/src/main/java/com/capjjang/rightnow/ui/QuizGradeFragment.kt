@@ -14,5 +14,9 @@ class QuizGradeFragment: BaseFragment<FragmentQuizGradeBinding>(R.layout.fragmen
 
         val grade: String? = MyGlobals.instance?.data
         binding.tvGrade.text = "당신의 점수는 $grade 점입니다"
+
+        binding.button2.setOnClickListener {
+            navController.navigate(R.id.action_quizGradeFragment2_to_startFragment)
+        }
     }
 }
