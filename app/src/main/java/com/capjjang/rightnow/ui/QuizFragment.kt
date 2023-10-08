@@ -71,10 +71,7 @@ class QuizFragment : BaseFragment<FragmentQuizBinding>(R.layout.fragment_quiz) {
             }
             else if(audioRecorder.isRecording == true){
                 // 화면에 값 변경
-//                binding.textView2.text = binding.textView2.text.toString() + newValue
-                if(i<quizItems[binding.viewPager2.currentItem].length )
-                    binding.textView2.text = binding.textView2.text.toString() + quizItems[binding.viewPager2.currentItem][i].toString()
-                i = i+ 1
+                binding.textView2.text = binding.textView2.text.toString() + newValue
                 Log.d("[mmihye]", "값 $newValue 으로 변경")
 
                 // UI 업데이트 후 녹음 시작
