@@ -54,7 +54,7 @@ RightNow 어플은 아이들이 책상에 손글씨 알파벳을 써서 해당 �
 <br><br>
 ## 🔗 디렉터리 구조
 ```
-.
+RightNow
 ├── api
 │   └── RecordService.kt
 ├── apiManager
