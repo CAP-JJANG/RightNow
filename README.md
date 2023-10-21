@@ -1,5 +1,3 @@
-
-<br><br>
 ## 🙌 소개
 **[ENG]**  
 RightNow is a mobile app for learning that recognizes children's handwritten sounds and scores English words.
