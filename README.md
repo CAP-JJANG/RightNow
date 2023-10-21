@@ -1,12 +1,9 @@
  <img width="100%" alt="image" src="https://github.com/Capjjang23/.github/assets/92065911/3acf80b7-fa8d-4b8d-aadf-1066ba7d8a7f">
- 
-## 🔥 제목
-RrightNow
 
 <br><br>
 ## 🙌 소개
 **[ENG]**  
-RightNow is a mobile app for learning that recognizes children's handwritten sounds and scores English words.
+**RightNow** is a mobile app for learning that recognizes children's handwritten sounds and scores English words.
 
 Children can learn how to write alphabets or English words using smart devices.
 If you use CSD-Model, even if you don't have a small screen or a smart pencil
@@ -16,7 +13,7 @@ The RightNow application is an application that helps children learn English wor
 <br><br>
 
 **[KOR]**  
-RightNow는 아이들의 손글씨 음향을 인식하여 영단어를 맞게 썼는지 채점하는 학습용 모바일 앱입니다.
+**RightNow**는 아이들의 손글씨 음향을 인식하여 영단어를 맞게 썼는지 채점하는 학습용 모바일 앱입니다.
 
 아이들은 알파벳이나 영어단어 쓰는법을 스마트기기를 활용하여 학습 할 수 있습니다.
 CSD-Model을 활용한다면 화면이 작아도, 스마트 펜슬이 없어도 
@@ -86,3 +83,67 @@ Once all questions have been completed, children can receive their final score.
 ## 🤖 라이센스
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/CAP-JJANG/RightNow/blob/main/LICENSE) file for details.
 
+## 🔨 라이센스 고지
+- **Android - platform - frameworks - support**
+
+  https://android.googlesource.com/platform/frameworks/support
+  
+  Copyright 2014 The Android Open Source Project
+  
+  Apache License 2.0
+
+- **Android Constraint Layout Library**
+
+  https://developer.android.com/reference/android/support/constraint/packages
+  
+  Copyright 2017 The Android Open Source Project
+  
+  Apache License 2.0
+
+- **AndroidX Test Library**
+
+  https://github.com/android/android-test
+  
+  Copyright 2018 The Android Open Source Project
+  
+  Apache License 2.0
+
+- **JUnit 4**
+
+  https://github.com/junit-team/junit4
+  
+  Copyright 2002-2016 JUnit.
+  
+  Eclipse Public License 1.0
+
+- **Material Components for Android**
+
+  https://github.com/material-components/material-components-android
+  
+  Copyright 2019 The Android Open Source Project
+  
+  Apache License 2.0
+
+- **Material View Pager Dots Indicator**
+  
+  https://github.com/tommybuonomo/dotsindicator
+  
+  Copyright 2018 Tommy Buonomo
+  
+  Apache License 2.0
+
+- **Square OkHttp**
+  
+  https://github.com/square/okhttp
+  
+  Copyright 2014 Square, Inc
+  
+  Apache License 2.0
+
+- **Square Retrofit**
+  
+  https://github.com/square/retrofit
+  
+  Copyright 2013 Square, Inc
+  
+  Apache License 2.0
