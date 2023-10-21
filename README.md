@@ -1,7 +1,3 @@
- <img width="100%" alt="image" src="https://github.com/Capjjang23/.github/assets/92065911/3acf80b7-fa8d-4b8d-aadf-1066ba7d8a7f">
- 
-## 🔥 제목
-RrightNow
 
 <br><br>
 ## 🙌 소개
@@ -27,28 +23,18 @@ RightNow 어플은 아이들이 책상에 손글씨 알파벳을 써서 해당 �
 <br><br>
 ## 💪 주요 기능
 **[ENG]**  
-Run the app and start it, you will see a picture on the screen.
-Children greet the corresponding picture with an English word by handwriting a number on a disposable piece.
-Enter the log of the English word corresponding to the picture.
-
-When you start typing, kids use it to display log signals and send them to the server.
-The server provides predicted prediction values ​​using CSD-Model.
-
-If you submit a statement, we will notify you of your name and whether it is a statement or not.
-Once all questions have been completed, children can receive their final score.
+1. A quiz picture card will appear.
+2. Children can enter English words by writing the alphabet by hand on the desk.
+3. When you submit the correct answer, you will be notified of the correct answer along with the correct answer.
+4. Once you complete all quizzes, you will see your final score.
 
 <br>
 
 **[KOR]**  
-앱을 실행하고 시작하면 화면에 그림이 나타납니다.
-아이들은 책상에 손글씨로 알파벳을 써서 해당 그림의 영어 단어를 맞춰야 합니다. 
-그림에 해당하는 영어 단어의 알파벳을 차례로 입력합니다.
-
-입력을 시작하면 아이들이 책상에서 쓰는 알파벳 음향신호를 녹음하여 서버에 보냅니다.
-서버에서는 받은 음향신호를 CSD-Model을 이용하여 알파벳 예측값을 돌려줍니다.
-
-정답을 제출하면 정답과 함께 정답여부를 알려줍니다. 
-모든 퀴즈를 완료하면 어린이들은 최종 점수를 확인할 수 있습니다.
+1. 퀴즈 그림 카드가 나타납니다.
+2. 아이들은 책상에 손글씨로 알파벳을 써서 영단어를 입력할 수 있습니다.
+3. 정답을 제출하면 정답과 함께 정답여부를 알려줍니다. 
+4. 모든 퀴즈를 완료하면 최종 점수를 확인할 수 있습니다.
 
 
 <br><br>
@@ -69,7 +55,31 @@ Once all questions have been completed, children can receive their final score.
 
 <br><br>
 ## 🔗 디렉터리 구조
-<img width="548" alt="image"  src="https://github.com/CAP-JJANG/RightNow/assets/92644651/3b0a59f3-a218-40e9-b3e7-6ca1f39e3b88">
+```
+.
+├── api
+│   └── RecordService.kt
+├── apiManager
+│   └── RecordApiManager.kt
+├── base
+│   ├── BaseBottomDialogFragment.kt
+│   ├── BaseDialogFragment.kt
+│   └── BaseFragment.kt
+├── model
+│   ├── PostTestModel.kt
+│   └── RecordModel.kt
+├── ui
+│   ├── LoadFragment.kt
+│   ├── MainActivity.kt
+│   ├── QuizAdapter.kt
+│   ├── QuizFragment.kt
+│   ├── QuizGradeFragment.kt
+│   ├── QuizResultDialog.kt
+│   └── StartFragment.kt
+└── util
+    ├── AudioRecorder.kt
+    └── MySharedPreferences.kt    
+```
 
 
 <br><br>
@@ -79,14 +89,14 @@ Once all questions have been completed, children can receive their final score.
 
 <br><br>
 ## 👀 실행 화면
-
+ <img width="100%" alt="image" src="https://github.com/Capjjang23/.github/assets/92065911/3acf80b7-fa8d-4b8d-aadf-1066ba7d8a7f">
 
 
 <br><br>
 ## 🤖 라이센스
 This project is licensed under the Apache License 2.0 - see the [LICENSE](https://github.com/CAP-JJANG/RightNow/blob/main/LICENSE) file for details.
 
-**라이센스 고지**<br>
-see the [OSS-Notice](https://github.com/CAP-JJANG/RightNow/blob/main/OSS-Notice.md) file for details.
+[OSS-Notice](https://github.com/CAP-JJANG/RightNow/blob/main/OSS-Notice.md) sets forth attribution notices for third party software that may be contained in this application.
+
 
 
