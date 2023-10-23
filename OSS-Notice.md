@@ -1,6 +1,75 @@
-                                Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+# OSS Notice | RightNowApp-Android #
+This application is Copyright © CAP-JJANG. All rights reserved.
+
+The following sets forth attribution notices for third party software that may be contained in this application.
+
+- **Android - platform - frameworks - support**
+
+https://android.googlesource.com/platform/frameworks/support
+
+Copyright 2014 The Android Open Source Project
+
+Apache License 2.0
+
+- **Android Constraint Layout Library**
+
+https://developer.android.com/reference/android/support/constraint/packages
+
+Copyright 2017 The Android Open Source Project
+
+Apache License 2.0
+
+- **AndroidX Test Library**
+
+https://github.com/android/android-test
+
+Copyright 2018 The Android Open Source Project
+
+Apache License 2.0
+
+- **JUnit 4**
+
+https://github.com/junit-team/junit4
+
+Copyright 2002-2016 JUnit.
+
+Eclipse Public License 1.0
+
+- **Material Components for Android**
+
+https://github.com/material-components/material-components-android
+
+Copyright 2019 The Android Open Source Project
+
+Apache License 2.0
+
+- **Material View Pager Dots Indicator**
+
+https://github.com/tommybuonomo/dotsindicator
+
+Copyright 2018 Tommy Buonomo
+
+Apache License 2.0
+
+- **Square OkHttp**
+
+https://github.com/square/okhttp
+
+Copyright 2014 Square, Inc
+
+Apache License 2.0
+
+- **Square Retrofit**
+
+https://github.com/square/retrofit
+
+Copyright 2013 Square, Inc
+
+### Apache License 2.0
+``````````
+Apache License
+Version 2.0, January 2004
+http://www.apache.org/licenses/
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -71,3 +140,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+Eclipse Public License 1.0
+Eclipse Public License - v 1.0
+``````````
