@@ -1,3 +1,4 @@
+
 ## 🙌 소개
 **[ENG]**  
 RightNow is a mobile app for learning that recognizes children's handwritten sounds and scores English words.
@@ -17,6 +18,8 @@ CSD-Model을 활용한다면 화면이 작아도, 스마트 펜슬이 없어도
 책상에서 쓰는 알파벳 음향신호를 이용하여 알파벳을 불편함없이 핸드폰 어플에 입력할 수 있습니다.
 
 RightNow 어플은 아이들이 책상에 손글씨 알파벳을 써서 해당 그림의 영어 단어를 맞추며 영단어를 학습할 수 있도록한 어플리케이션입니다.
+
+**[RightNow demoration video](https://www.youtube.com/watch?v=_u7mkC3qIwM)** 🏃🏃🏃
 
 <br><br>
 ## 💪 주요 기능
